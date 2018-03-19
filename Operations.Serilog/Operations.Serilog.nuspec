@@ -15,4 +15,7 @@
         <copyright>Copyright 2018</copyright>
         <tags>Operations tracking diagnostics profiling serilog structured logging</tags>
     </metadata>
+    <files>
+        <file src="Readme.txt" target="" />
+    </files>
 </package>
