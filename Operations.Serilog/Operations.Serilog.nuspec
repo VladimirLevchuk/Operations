@@ -16,6 +16,6 @@
         <tags>Operations tracking diagnostics profiling serilog structured logging</tags>
     </metadata>
     <files>
-        <file src="Readme.txt" target="" />
+        <file src="readme.txt" target="" />
     </files>
 </package>

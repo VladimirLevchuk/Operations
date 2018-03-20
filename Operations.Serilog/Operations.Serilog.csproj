@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Operations.AssemblyInfo.cs">
+      <Link>Properties\Operations.AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="OperationContextEnricher.cs" />
     <Compile Include="OperationsSerilogDefaults.cs" />
     <Compile Include="SerilogLazyExtensions.cs" />
@@ -70,7 +73,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
+    <None Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

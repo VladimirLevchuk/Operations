@@ -67,6 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Operations.AssemblyInfo.cs">
+      <Link>Properties\Operations.AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="HttpContextAccessor.cs" />
     <Compile Include="HttpRequestLocal.cs" />
     <Compile Include="Mvc\ControllerContextExtensions.cs" />

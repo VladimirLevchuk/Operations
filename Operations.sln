@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operations.Serilog", "Opera
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test apps", "Test apps", "{A31680CE-6FD5-43F4-AE5D-8FC96041A176}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9676DC7E-74E0-446F-8283-3D09427E8D94}"
+	ProjectSection(SolutionItems) = preProject
+		Operations.AssemblyInfo.cs = Operations.AssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

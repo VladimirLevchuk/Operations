@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Operations.AssemblyInfo.cs">
+      <Link>Properties\Operations.AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Configuration\DefaultFactories.cs" />
     <Compile Include="Configuration\IOperationsConfigurator.cs" />
     <Compile Include="Internal\DefaultRootOperationTrackerFactory.cs" />
