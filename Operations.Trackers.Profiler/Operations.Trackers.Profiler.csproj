@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Operations.Trackers.Profiler</RootNamespace>
-    <AssemblyName>Operations.Trackers.Profiler</AssemblyName>
+    <AssemblyName>Op.Trackers.Profiler</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

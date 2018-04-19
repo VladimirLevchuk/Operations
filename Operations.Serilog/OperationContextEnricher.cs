@@ -1,3 +1,4 @@
+using System.Linq;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -13,7 +14,8 @@ namespace Operations.Serilog
         protected IOperation Operation { get; }
         public virtual void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            var property = propertyFactory.CreateProperty("operationContext", Operation.ToDictionary());
+            // todo: use destrcuturing
+            var property = propertyFactory.CreateProperty("operationContext", Operation.ToDictionary(), destructureObjects: false);
             logEvent.AddPropertyIfAbsent(property);
         }
     }

@@ -1,24 +1,28 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using Operations.Debugging;
-using Operations.Serilog;
-using Operations.Trackers;
-using Operations.Trackers.Profiler;
-using Operations.Util;
-using Serilog;
-using Serilog.Debugging;
-using Serilog.Events;
+﻿Op - Operations Framework
+=========================
+Inspired by great Serilog and MiniProfiler Op provides a simple way to keep a diagnostics context. 
 
-namespace Operations.ConsoleTestApp
-{
+## Features
+- Operation (IOperation) is a named (logical) scope of code holding an _operation context_ (dictionary-based storage)
+- Operation Tracker (IOpeartionTracker) is simple handler of the predefined operation events: Start/Finish/Update/Error (Update is for tracking operation progress). 
+Tracker stores its tracking information in the operation context. 
+- The root operation tracker (IRootOperationTracker) is used by framework to configure list of trackers (to be sequentally run for each operation)
+- So Op allows to _track_ logical operations by a configurable set of _trackers_ (like Enrichers in Serilog)
+- Built-in trackers: 
+    - StatusTracker - adds status ok flag and error (if any) to the operation context
+    - ProfilingTracker - does the profiling job
+    - SerilogOperationTracker - logs operation events to serilog
+
+## Sample usage
+
+```
     class Program
     {
         static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.ColoredConsole(LogEventLevel.Debug, "{Level:u3} {Timestamp:yyyy-MM-dd HH:mm:ss} {Message}{NewLine}{Exception}{NewLine}{Properties}{NewLine}{NewLine}")
+                .WriteTo.ColoredConsole(LogEventLevel.Debug)
                 // The following requires https://getseq.net/
                 .WriteTo.Seq("http://localhost:5341/")
                 .Enrich.FromLogContext()
@@ -49,8 +53,7 @@ namespace Operations.ConsoleTestApp
                     {
                         var test = i;
 
-                        op.Update($"something new happended: starting #{test}");
-                        // todo: support Op.Run("name", op => { ... op.Update() } })
+						op.Update($"something new happended: starting #{test}");
 
                         Op.Run($"child #{test}", () =>
                         {
@@ -63,7 +66,7 @@ namespace Operations.ConsoleTestApp
                             {
                                 throw new Exception("space oddity");
                             }
-                            
+
                             Log.Logger.Information("hello from child");
                         }, Op.Context(new {parent = "root"}));
                     }
@@ -83,4 +86,6 @@ namespace Operations.ConsoleTestApp
             }
         }
     }
-}
+```
+## Release Notes
+  - v0.9.0 - Initial release. todo: add tests & samples
