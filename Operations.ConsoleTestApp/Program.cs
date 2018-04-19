@@ -5,7 +5,6 @@ using Operations.Debugging;
 using Operations.Serilog;
 using Operations.Trackers;
 using Operations.Trackers.Profiler;
-using Operations.Util;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Events;
@@ -32,6 +31,8 @@ namespace Operations.ConsoleTestApp
 
             OperationsLog.Enable(Console.WriteLine);
             OperationsSerilogDefaults.Apply();
+
+            Operations.Serilog.Factories.UseDestructuring();
 
             Op.Runner = Op.Configure(x => x
                 .Track.With<StatusTracker>()

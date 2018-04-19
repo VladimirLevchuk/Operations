@@ -27,7 +27,7 @@ namespace Operations
         public virtual string Name { get;  }
         public IOperationContext Context { get; }
 
-        public virtual IReadOnlyDictionary<string, object> ToDictionary()
+        public virtual Dictionary<string, object> ToDictionary()
         {
             var data = new Dictionary<string, object>
             {

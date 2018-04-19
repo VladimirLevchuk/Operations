@@ -11,7 +11,7 @@ namespace Operations.Serilog
         public SerilogOperationScope(IOperationsRunner runner, IOperation operation)
             : base(runner, operation)
         {
-            this._logContextScope = LogContext.Push(new OperationContextEnricher(operation));
+            this._logContextScope = LogContext.Push(Factories.OperationContextEnricherEnricherFactoryMethod(operation));
         }
 
         protected override void Dispose(bool disposing)

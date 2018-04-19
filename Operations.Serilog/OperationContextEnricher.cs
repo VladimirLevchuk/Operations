@@ -1,4 +1,3 @@
-using System.Linq;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -6,16 +5,18 @@ namespace Operations.Serilog
 {
     public class OperationContextEnricher : ILogEventEnricher
     {
-        public OperationContextEnricher(IOperation operation)
+        public OperationContextEnricher(ISerilogOperationFormatter formatter, IOperation operation)
         {
+            Formatter = formatter;
             Operation = operation;
         }
 
+        protected ISerilogOperationFormatter Formatter { get; }
         protected IOperation Operation { get; }
         public virtual void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            // todo: use destrcuturing
-            var property = propertyFactory.CreateProperty("operationContext", Operation.ToDictionary(), destructureObjects: false);
+            var value = Formatter.Format(Operation);
+            var property = propertyFactory.CreateProperty("operationContext", value.Data, destructureObjects: value.Destructure);
             logEvent.AddPropertyIfAbsent(property);
         }
     }

@@ -4,7 +4,7 @@ using Operations.Util;
 
 namespace Operations.Trackers
 {
-    public class Status
+    public class Status : IStructuredData
     {
         public enum OperationStatus
         {
@@ -19,7 +19,7 @@ namespace Operations.Trackers
 
         public static Status Create(OperationStatus status)
         {
-            return new Status { StatusText = status.ToString() };
+            return new Status { StatusText = status != OperationStatus.Unknown ? status.ToString().ToLowerInvariant() : "?" };
         }
 
         public static Status Unknown()
@@ -61,7 +61,7 @@ namespace Operations.Trackers
 #pragma warning disable 618 // TODO: revise Formatter concept
         public override string ToString()
         {
-            return Errors.Count == 0 ? StatusText.ToLowerInvariant() : Formatter.Current.Format(ToDictionary());
+            return Errors.Count == 0 ? StatusText ?? "?" : Formatter.Current.Format(ToDictionary());
         }
 #pragma warning restore 618
     }

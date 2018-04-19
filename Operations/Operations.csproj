@@ -66,6 +66,7 @@
     <Compile Include="IAsyncOperationsRunner.cs" />
     <Compile Include="IOperationScope.cs" />
     <Compile Include="IOperationScopeFactory.cs" />
+    <Compile Include="IStructuredData.cs" />
     <Compile Include="Trackers\Status.cs" />
     <Compile Include="Trackers\StatusError.cs" />
     <Compile Include="Util\StructuredDataHelper.cs" />

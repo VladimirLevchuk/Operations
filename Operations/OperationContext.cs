@@ -24,9 +24,9 @@ namespace Operations
             _data = new ConcurrentDictionary<string, object>(initialValue, StringComparer.OrdinalIgnoreCase);
         }
 
-        public virtual IReadOnlyDictionary<string, object> ToDictionary()
+        public virtual Dictionary<string, object> ToDictionary()
         {
-            return new ReadOnlyDictionary<string, object>(_data);
+            return _data.ToDictionary(x => x.Key, x => x.Value);
         }
 
         public virtual IReadOnlyList<KeyValuePair<string, object>> ToList()
