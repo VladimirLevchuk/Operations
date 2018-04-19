@@ -7,10 +7,8 @@ namespace Operations
     /// <summary>
     /// Thread-safe operation context
     /// </summary>
-    public interface IOperationContext
+    public interface IOperationContext : IStructuredData
     {
-        [NotNull]
-        IReadOnlyDictionary<string, object> ToDictionary();
         [NotNull]
         IReadOnlyList<KeyValuePair<string, object>> ToList();
         void AddOrUpdate([NotNull] string key, [CanBeNull] object value);

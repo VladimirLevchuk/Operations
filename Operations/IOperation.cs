@@ -6,7 +6,7 @@ namespace Operations
     /// <summary>
     /// The operation
     /// </summary>
-    public interface IOperation
+    public interface IOperation : IStructuredData
     {
         /// <summary>
         /// Unique operation id
@@ -23,7 +23,5 @@ namespace Operations
         /// </summary>
         [NotNull]
         IOperationContext Context { get; }
-
-        IReadOnlyDictionary<string, object> ToDictionary();
     }
 }

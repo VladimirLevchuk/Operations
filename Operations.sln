@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9676DC7E-74E0-446F-8283-3D09427E8D94}"
 	ProjectSection(SolutionItems) = preProject
 		Operations.AssemblyInfo.cs = Operations.AssemblyInfo.cs
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Global
