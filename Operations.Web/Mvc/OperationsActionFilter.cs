@@ -25,12 +25,18 @@ namespace Operations.Web.Mvc
         protected IOperationScope StartMvcOperation(MvcOperationContext context)
         {
             var scope = Op.Start(context.GetOperationName(), Op.Context(context.ToDictionary()));
-            ActionToOperationMap[context.GetOperationKey()] = scope;
+            if (ActionToOperationMapKeeper.HasContext)
+            {
+                ActionToOperationMap[context.GetOperationKey()] = scope;
+            }
             return scope;
         }
 
         protected void TryFinishMvcOperation(MvcOperationContext context)
         {
+            if (!ActionToOperationMapKeeper.HasContext)
+                return;
+
             IOperationScope scope;
             if (!ActionToOperationMap.TryGetValue(context.GetOperationKey(), out scope))
             {
