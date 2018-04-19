@@ -4,7 +4,7 @@ using Operations.Util;
 
 namespace Operations.Web.Mvc
 {
-    public class MvcOperationContext
+    public class MvcOperationContext : IStructuredData
     {
         public MvcOperationContext(ControllerContext context, string subject)
         {
@@ -36,7 +36,7 @@ namespace Operations.Web.Mvc
             return $"{Controller}/{Action}-{Subject}";
         }
 
-        public virtual IReadOnlyDictionary<string, object> ToDictionary()
+        public virtual Dictionary<string, object> ToDictionary()
         {
             return StructuredDataHelper.ObjectToDictionary(this);
         }

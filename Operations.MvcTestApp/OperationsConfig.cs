@@ -20,6 +20,7 @@ namespace Operations.MvcTestApp
                 .MinimumLevel.Debug()
                 // The following requires https://getseq.net/
                 .WriteTo.Seq("http://localhost:5341/")
+                .ConfigureDefaultOperationsDestructuring()
                 .Enrich.FromLogContext()
                 .Enrich.With<HttpRequestIdEnricher>()
                 .Enrich.With<HttpRequestTraceIdEnricher>()
@@ -34,6 +35,7 @@ namespace Operations.MvcTestApp
 
             OperationsLog.Enable(msg => Log.ForContext<OperationsConfig>().Warning(msg));
             OperationsSerilogDefaults.Apply();
+            Operations.Serilog.Factories.UseDestructuring();
 
             Op.Runner = Op.Configure(x => x
                     .Track.With<StatusTracker>()

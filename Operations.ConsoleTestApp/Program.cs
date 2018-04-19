@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using Newtonsoft.Json;
 using Operations.Debugging;
 using Operations.Serilog;
 using Operations.Trackers;
@@ -19,6 +21,7 @@ namespace Operations.ConsoleTestApp
                 .MinimumLevel.Debug()
                 .WriteTo.ColoredConsole(LogEventLevel.Debug, "{Level:u3} {Timestamp:yyyy-MM-dd HH:mm:ss} {Message}{NewLine}{Exception}{NewLine}{Properties}{NewLine}{NewLine}")
                 // The following requires https://getseq.net/
+                .ConfigureDefaultOperationsDestructuring()
                 .WriteTo.Seq("http://localhost:5341/")
                 .Enrich.FromLogContext()
                 .CreateLogger();

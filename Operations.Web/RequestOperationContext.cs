@@ -4,7 +4,7 @@ using Operations.Util;
 
 namespace Operations.Web
 {
-    public class RequestOperationContext
+    public class RequestOperationContext : IStructuredData
     {
         public RequestOperationContext(HttpRequestBase request)
         {
@@ -22,7 +22,7 @@ namespace Operations.Web
             return $"{Method} {RawUrl}";
         }
 
-        public virtual IReadOnlyDictionary<string, object> ToDictionary()
+        public virtual Dictionary<string, object> ToDictionary()
         {
             return StructuredDataHelper.ObjectToDictionary(this);
         }

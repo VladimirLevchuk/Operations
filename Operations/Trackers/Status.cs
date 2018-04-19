@@ -17,9 +17,14 @@ namespace Operations.Trackers
         public string StatusText;
         public readonly List<StatusError> Errors = new List<StatusError>();
 
+        private static string OperationStatusToString(OperationStatus status)
+        {
+            return status != OperationStatus.Unknown ? status.ToString().ToLowerInvariant() : "?";
+        }
+
         public static Status Create(OperationStatus status)
         {
-            return new Status { StatusText = status != OperationStatus.Unknown ? status.ToString().ToLowerInvariant() : "?" };
+            return new Status { StatusText = OperationStatusToString(status) };
         }
 
         public static Status Unknown()
@@ -35,12 +40,12 @@ namespace Operations.Trackers
         public void Finish()
         {
             var status = Errors.Count > 0 ? OperationStatus.Failed : OperationStatus.Ok;
-            StatusText = status.ToString();
+            StatusText = OperationStatusToString(status);
         }
 
         public void Update(string progress)
         {
-            StatusText = $"{OperationStatus.Running}: {progress}";
+            StatusText = $"{OperationStatusToString(OperationStatus.Running)}: {progress}";
         }
 
         public void Error(Exception error)
