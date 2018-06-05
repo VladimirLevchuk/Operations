@@ -6,7 +6,7 @@ SET currentDir=%~dp0
 
 SET projectUrl=https://github.com/VladimirLevchuk/Operations
 SET license=%projectUrl%/blob/master/LICENSE
-SET releaseNotes=%projectUrl%/blob/master/readme.md#releaseNotes
+SET releaseNotes=%projectUrl%/blob/master/readme.md#release-notes
 
 
 PUSHD %project%
